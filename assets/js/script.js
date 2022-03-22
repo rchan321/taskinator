@@ -13,8 +13,10 @@ var createTaskEl = function(taskDataObj) {
   taskInfoEl.className = "task-info";
   taskInfoEl.innerHTML = "<h3 class='task-name'>" + taskDataObj.name + "</h3><span class='task-type'>" + taskDataObj.type + "</span>";
   listItemEl.appendChild(taskInfoEl);
+  var taskActionsEl = createTaskActions(taskIdCounter);
+listItemEl.appendChild(taskActionsEl);
 
-  tasksToDoEl.appendChild(listItemEl);
+tasksToDoEl.appendChild(listItemEl);
 
   // increase task counter for next unique id
   taskIdCounter++;
@@ -23,8 +25,7 @@ var createTaskEl = function(taskDataObj) {
 var createTaskActions = function(taskId) {
   var actionContainerEl = document.createElement("div");
   actionContainerEl.className = "task-actions";
-  return actionContainerEl;
-};
+
 
 // create edit button
 var editButtonEl = document.createElement("button");
@@ -60,6 +61,9 @@ for (var i = 0; i < statusChoices.length; i++) {
 actionContainerEl.appendChild(statusSelectEl);
 
 actionContainerEl.appendChild(deleteButtonEl);
+  return actionContainerEl;
+};
+
 
 var taskFormHandler = function(event) {
   event.preventDefault();
